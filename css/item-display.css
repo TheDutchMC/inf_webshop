@@ -1,0 +1,51 @@
+/* Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)*/
+
+#item-display-wrapper {
+    width: 80%;
+    margin: 30px auto 30px auto;
+    padding: 0;
+    height: auto;
+    float: center;
+}
+
+.items {
+    display: inline-block;
+    margin: 15px 35px 15px 35px;
+    width: auto;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.items:hover {
+    transform: scale(1.1);
+}
+
+.items-img {
+    width: 100px;
+    height: 100px;
+}
+
+.itemName {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.itemPrice {
+    color: green;
+    font-weight: bold;
+}
+
+.button {
+    border-radius: 10px;
+    margin-top: 5px;
+    background-color: white;
+    transition: all 0.3 ease;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}

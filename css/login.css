@@ -1,0 +1,24 @@
+
+.login-wrapper {
+    width: 30%;
+    margin: 0 auto;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    background-color: whitesmoke;
+    padding-bottom: 35px;
+
+}
+
+.g-signin2{
+    width: 100%;
+
+  }
+  
+.g-signin2 > div{
+    margin: 0 auto;
+    transform: scale(2);
+}
+
+.header {
+    text-align: center;
+    padding-top: 10px;
+}

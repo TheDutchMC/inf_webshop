@@ -1,0 +1,44 @@
+.popup-wrapper {
+    position: absolute;
+    z-index: 10;
+    min-width: 20%;
+    width: auto;
+    height: 100px;
+    left: calc(50% - (20% / 2));
+    top: 40%;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    border-radius: 3px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    transform: scale(2);
+}
+
+.popup-message {
+    z-index: inherit;
+}
+
+.close-popup-btn {
+    z-index: inherit;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    border: solid 1px #039BE5;
+
+}
+
+.close-popup-btn:hover {
+    transform: scale(1.1);
+}
+
+/*blur effect*/
+body > * {
+    transition: all 0.3s ease;
+}
+
+body > *:not(.popup-wrapper) {
+    filter: blur(2px);
+    pointer-events: none;
+
+}
