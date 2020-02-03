@@ -1,3 +1,4 @@
+//Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
 var popupElement = document.getElementsByClassName('popup-wrapper')[0];
 
 $('.popup-wrapper').hide();

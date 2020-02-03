@@ -2,8 +2,6 @@
 var profile = null;
 var signedIn = false;
 
-var x = 5;
-
 function onSignIn(googleUser) {
     profile = googleUser.getBasicProfile();
     signedIn = true;
@@ -18,6 +16,21 @@ function onSignIn(googleUser) {
     userEntity.email = profile.getEmail();
 
     sessionStorage.setItem('userEntity', JSON.stringify(userEntity));
+
+    var goal = "newUser";
+
+    $.ajax({
+        method: "POST",
+        url: "php/backend_rec.php",
+        data: {
+            'goal': goal,
+            'userid': userEntity.id
+        }
+    }).done(function(msg) {
+        console.log("Callback \n" + msg);
+    });
+
+    window.location.replace('http://inf.thedutchmc.nl/store.php');
 }
 
 function logout() {

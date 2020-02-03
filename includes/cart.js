@@ -1,6 +1,9 @@
 //Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
-$(".cart-wrapper").hide();
 var currency = '€';
+
+$(document).ready(function() {
+    ready()
+});
 
 function ready() {
 
@@ -96,6 +99,8 @@ function addItemToCart(img_path, item, price) {
 
     cartRow.getElementsByClassName('qtyInput')[0].value = 1;
     updateTotal();
+
+    toBackend("addToCart", price, 1, item);
     }
 
 //Check if the new quantity is a valid number, then update the total
@@ -140,4 +145,28 @@ function hideCart(cartWrapper) {
 
 function showCart(cartWrapper) {
     $(".cart-wrapper").fadeIn(100);
+}
+
+function toBackend(goal, price, qty, item) {
+
+    var userEntity = {};
+    userEntity = JSON.parse(sessionStorage.getItem('userEntity'));
+
+    var userid = userEntity.id;
+
+    console.log(userid);
+
+    $.ajax({
+        method: "POST",
+        url: "php/backend_rec.php",
+        data: {
+            'goal': goal,
+            'userid': userid,
+            'item': item,
+            'qty': qty,
+            'price': price
+        }
+    }).done(function(msg) {
+        console.log("Callback \n" + msg);
+    });
 }

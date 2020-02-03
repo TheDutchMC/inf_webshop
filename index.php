@@ -3,15 +3,13 @@ COPYRIGHT (C) 2020 Tobias de Bruijn (TheDutchMC)
 
 File structure:
 
-/js_gen/ -- All JavaScript files that do not fit under any other category
+/js/ -- All JavaScript files that do not fit under any other category
 /content/ -- Any media files required for the site
 /css/ -- All the CSS files
 /data/ -- JSON file (data.json) which stores every item sold
 /db/ -- PHP file required for working with the Database
 /img_store/ -- Any image that may be necessary in the store
 /includes/ -- PHP pages that are used universally across the website
-/jquery/ -- JQuery JavaScript Scripts
-    - ajax/ -- Scripts using AJAX
 /ng-cribs/scripts/ -- AngularJS
 /pages/ -- PHP files that are required for specific pages, sorted into folders named after the page that requires it.
 
@@ -49,7 +47,15 @@ File structure:
                         <li><div class="list-item">AngularJS</div></li>
                     </ul>
                 </div>
-                <div class="paragraph"> Ook gebruikt deze site een MySQL database. </br>Inloggen gaat via de Google Sign-In API</div>
+                <div class="paragraph"> Ook gebruikt deze site een MySQL database.
+                    <br/>Inloggen gaat via de Google Sign-In API.
+                    <br/>
+                    <br/>De broncode is te vinden op mijn <a class="pagelink" href="https://github.com/TheDutchMC/inf_webshop">GitHub</a>
+                    <br/>
+                    <br/>Alle code op deze website is authentiek en gelicenceerd onder de GNU General Public Licence v3.0
+                    <br/>
+                    <br/><strong> Deze pagina is nog een work in progress!</strong>
+                </div>
             </div>
         </div>
     </body>

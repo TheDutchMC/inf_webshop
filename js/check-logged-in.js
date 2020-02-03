@@ -1,5 +1,7 @@
+//Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
 checkLogin();
 
+//Check if we are logged in
 function checkLogin() {
     if(sessionStorage.getItem('userEntity') == null) {
         window.location.href = 'login.php';

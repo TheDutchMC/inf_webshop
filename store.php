@@ -15,8 +15,6 @@ Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
         <!--Stylesheet specifically for this page-->
         <link rel="stylesheet" type="text/css" href="css/item-display.css"></link>
 
-        <!-- The script that handles the shopping card-->
-        <script src="js/store.js" async></script>
     </head>
     <body ng-app="ngCribs" ng-controller="cribsController">
         <?php 

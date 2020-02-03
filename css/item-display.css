@@ -1,5 +1,4 @@
 /* Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)*/
-
 #item-display-wrapper {
     width: 80%;
     margin: 30px auto 30px auto;
@@ -11,7 +10,7 @@
 .items {
     display: inline-block;
     margin: 15px 35px 15px 35px;
-    width: auto;
+    width: 212px;
     text-align: center;
     padding: 20px 10px 20px 10px;
     background-color: whitesmoke;
@@ -34,6 +33,10 @@
     font-size: 20px;
 }
 
+.moreInfo {
+    white-space: pre-line;
+}
+
 .itemPrice {
     color: green;
     font-weight: bold;
@@ -41,8 +44,10 @@
 
 .button {
     border-radius: 10px;
+    border: solid #777 1.5px;
     margin-top: 5px;
-    background-color: white;
+    color: white;
+    background-color: #777;
     transition: all 0.3 ease;
 }
 

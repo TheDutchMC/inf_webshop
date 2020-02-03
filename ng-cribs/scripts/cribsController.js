@@ -2,24 +2,19 @@
 
 var items = [];
 
-var loaded = false;
-
+var data;
 angular
     .module('ngCribs')
     .controller('cribsController', function($scope, cribsFactory) {
         $scope.cribs;
+
         cribsFactory.getCribs().then(function(response) {
+            data = response.data;
             $scope.cribs = response.data;
+
         }).catch(function(response) {
             console.log(response.status);
         });
-
-        $scope.finishedLoading = function() {
-            if(!loaded) {
-                loaded = true;
-                ready();
-            }
-        }
 
         $scope.addToCart = function(crib) {
             var imgSrc = crib.img_path;

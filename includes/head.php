@@ -25,6 +25,10 @@ Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
 
 <!--Local Scripts-->
 <script src="includes/google-login.js"></script>
+<script src="js/page-setup.js"></script>
+
+<!--Favicon-->
+<link rel="shortcut icon" href="content/favicon.png"/>
 
 <!--Tags that are the same on every page-->
 <title> The Grand Computer Store </title>
