@@ -110,6 +110,15 @@ function quantityChanged(event) {
         input.value = 1;
     }
     updateTotal();
+
+    var parent = input.parentElement.parentElement;
+    var itemElement = parent.getElementsByClassName("item")[0];
+    var priceElement = parent.getElementsByClassName("price")[0];
+
+    var item = itemElement.innerText;
+    var price = priceElement.innerText;
+
+    toBackend("changeQty", price, input.value, item);
 }
 
 //Uodate the total value.
