@@ -20,6 +20,8 @@ angular
             var imgSrc = crib.img_path;
             var item = crib.name;
             var price = crib.price;
-            addToCartClicked(imgSrc, item, price);
+            var id = crib.id;
+            console.log(id);
+            addToCartClicked(imgSrc, item, id, price);
         }
     });

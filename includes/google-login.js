@@ -30,7 +30,7 @@ function onSignIn(googleUser) {
         console.log("Callback \n" + msg);
     });
 
-    window.location.replace('http://inf.thedutchmc.nl/store.php');
+ //   window.location.replace('http://inf.thedutchmc.nl/store.php');
 }
 
 function logout() {

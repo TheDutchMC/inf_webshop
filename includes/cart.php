@@ -11,6 +11,7 @@ Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
             <tr>
                 <td></td>
                 <td class="item-col"><div class="item-label cart-col"> ITEM </div> </td>
+                <td class='id-col'> <div class="id-label cart-col"> ID </div></td>
                 <td class="price-col"><div class="price-label cart-col"> PRICE </div> </td>
                 <td class="quantity-col"> <div class="quantity-label cart-col"> QUANTITY </div></td>
             </tr>

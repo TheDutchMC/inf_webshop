@@ -41,6 +41,12 @@
     padding-bottom: 3px
 }
 
+.id {
+    margin-right: 50px !important;
+    border-bottom: 1px solid black;
+    padding-bottom: 3px;
+}
+
 .price {
     margin-right: 50px !important;
     border-bottom: 1px solid black;

@@ -36,3 +36,9 @@ Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
 <!--Required META tags-->
 <meta charset="utf8">
 <meta name="google-signin-client_id" content="828138038814-8kjrks1464gj3mnq1s46v1h4gjouc0jp.apps.googleusercontent.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--META tags for SEO-->
+<meta name="author" content="Tobias de Bruijn">
+<meta name="description" content="Informatica webshop">
+<meta name="keywords" content="informatica, webshop, ecommerce, eshop">

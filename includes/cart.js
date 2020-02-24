@@ -58,10 +58,23 @@ function removeFromCart(event) {
     var buttonClicked = event.target;
     buttonClicked.parentElement.parentElement.remove();
     updateTotal();
+
+
+    var itemElement = buttonClicked.parentElement.parentElement.getElementsByClassName("item")[0];
+    var priceElement = buttonClicked.parentElement.parentElement.getElementsByClassName("price")[0];
+
+    var item = itemElement.innerHTML;
+    var price = priceElement.innerHTML;
+
+    var qty = ""
+
+    console.log("item: " + item + " price: " + price + " qty: " + qty);
+
+    toBackend("removeFromCart", price, qty, item);
 }
 
 //Add an item to the cart, this gets called from cribsController.js
-function addToCartClicked(imgSrc, item, price) {
+function addToCartClicked(imgSrc, item, id, price) {
     
     var cartItemNames = document.getElementsByClassName('item');
     for(var i = 0; i < cartItemNames.length; i++) {
@@ -71,13 +84,14 @@ function addToCartClicked(imgSrc, item, price) {
         }
     }
 
+    console.log(id);
     var img_path = '/img_store/' + imgSrc + '.png';
 
-    addItemToCart(img_path, item, price);
+    addItemToCart(img_path, item, id, price);
 }
 
 //Add the item to the cart
-function addItemToCart(img_path, item, price) {
+function addItemToCart(img_path, item, id, price) {
     var cartRow = document.createElement('tr');
     cartRow.classList.add('item-row');
     var cartTable = document.getElementsByClassName('cart-table')[0];
@@ -87,6 +101,7 @@ function addItemToCart(img_path, item, price) {
     var cartRowContent = `
         <td class="image-col cart-col"><img class="cart-img" src="${img_path}" alt="Unable to load image!"></img></td>
         <td class="item-col cart-col"><div class="item"> ${item}</div></td>
+        <td class="item_col cart-col"><div class="id"> ${id}</div></td>
         <td class="price-col cart-col"><div class="price"> ${priceWithCurrency} </div></td>
         <td class="quantity-col cart-col"><input class="qtyInput" type="text" text="1"></input></td>
         <td class="remove-col cart-col"><button class="remove-button"> REMOVE </button></td>
@@ -100,7 +115,7 @@ function addItemToCart(img_path, item, price) {
     cartRow.getElementsByClassName('qtyInput')[0].value = 1;
     updateTotal();
 
-    toBackend("addToCart", price, 1, item);
+    toBackend("addToCart", price, 1, item, id);
     }
 
 //Check if the new quantity is a valid number, then update the total
@@ -114,6 +129,7 @@ function quantityChanged(event) {
     var parent = input.parentElement.parentElement;
     var itemElement = parent.getElementsByClassName("item")[0];
     var priceElement = parent.getElementsByClassName("price")[0];
+    var idElement = parent.getElementsByClassName("itemId");
 
     var item = itemElement.innerText;
     var price = priceElement.innerText;
@@ -156,14 +172,14 @@ function showCart(cartWrapper) {
     $(".cart-wrapper").fadeIn(100);
 }
 
-function toBackend(goal, price, qty, item) {
+function toBackend(goal, price, qty, item, id) {
 
     var userEntity = {};
     userEntity = JSON.parse(sessionStorage.getItem('userEntity'));
 
     var userid = userEntity.id;
 
-    console.log(userid);
+    console.log(id);
 
     $.ajax({
         method: "POST",
@@ -172,6 +188,7 @@ function toBackend(goal, price, qty, item) {
             'goal': goal,
             'userid': userid,
             'item': item,
+            'item_id': id,
             'qty': qty,
             'price': price
         }

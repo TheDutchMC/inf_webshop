@@ -47,17 +47,23 @@ File structure:
                         <li><div class="list-item">AngularJS</div></li>
                     </ul>
                 </div>
-                <div class="paragraph"> Ook gebruikt deze site een MySQL database.
+                <div class="paragraph"> Ook gebruikt deze site een MySQL database, alle requests naar deze database zijn async via AJAX+
                     <br/>Inloggen gaat via de Google Sign-In API.
                     <br/>
                     <br/>De broncode is te vinden op mijn <a class="pagelink" href="https://github.com/TheDutchMC/inf_webshop">GitHub</a>
                     <br/>
-                    <br/>Alle code op deze website is authentiek en gelicenceerd onder de GNU General Public Licence v3.0
+                    <br/>Alle code op deze website is gelicenceerd onder de GNU General Public Licence v3.0
                     <br/>
                     <br/><strong> Deze pagina is nog een work in progress!</strong>
                 </div>
             </div>
         </div>
+
+        <button class="testButton">New User </button>
+
+
+        
+        <script src="js/index_testbtn.js"></script>
     </body>
 </html>
 

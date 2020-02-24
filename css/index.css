@@ -1,4 +1,9 @@
 /*Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)*/
+html {
+    min-height:100%;
+    position:relative;
+}
+
 .content-wrapper {
     margin: 20px 60px 0 60px;
     background-color: whitesmoke;
@@ -6,6 +11,7 @@
     border-radius: 3px;
     width: auto;
     padding: 20px 20px 20px 20px;
+    min-height: 100%;
 }
 
 .label {
