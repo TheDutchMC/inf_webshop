@@ -10,7 +10,7 @@ Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
         <!--Stylesheet specifically for this page-->
         <link rel="stylesheet" type="text/css" href="css/login.css"></link>
     </head>
-    <body ng-app="ngCribs" ng-controller="cribsController">
+    <body>
         <!--Navigation bar-->
         <?php include "includes/mainnav.php" ?>
 
@@ -22,28 +22,39 @@ Copyright (C) 2020 Tobias de Bruijn (TheDutchMC)
 
             <div class="registerSide">
                 <div class="header"> Register </div>
-                <input type="text" placeholder="First Name" class="firstNameField"></input>
-                <input type="text" placeholder="Last Name" class="lastNameField"></input>
-                <input type="email" placeholder="Email" class="emailField"></input>
-                <input type="password" placeholder="Password" class="passwordField"></input>
-                <input type="password" placeholder="Confirm Password" class="confirmPasswordField"></input>
-                <input type="text" placeholder="Street Name" class="streetField"></input>
-                <input type="text" placeholder="Postal Code" class="postalFIeld"></input>
-                <input type="text" placeholder="House Number" class="houseField"></input>
-                <input type="tel" placeholder="Phone Number" class="phoneField"></input>
+                <div class="response"> </div>
+                <input type="text" placeholder="First Name" class="firstNameField input"></input>
+                <input type="text" placeholder="Last Name" class="lastNameField input"></input>
+                <input type="email" placeholder="Email" class="emailField input"></input>
+                <input type="password" placeholder="Password" class="passwordField input"></input>
+                <input type="password" placeholder="Confirm Password" class="confirmPasswordField input"></input>
+                <input type="text" placeholder="Street Name" class="streetField input"></input>
+                <input type="text" placeholder="Postal Code" class="postalFIeld input"></input>
+                <input type="text" placeholder="House Number" class="houseField input"></input>
+                <input type="tel" placeholder="Phone Number" class="phoneField input"></input>
                 <div class="policyWrapper">
-                    <input type="checkbox" class="acceptPolicy">
-                    <div class="policyHolder"><a class="policyLink" href="#">I agree with the terms and conditions</a></div>
+                    <table>
+                        <tr>
+                            <td><input type="checkbox" class="acceptPolicy"></td>
+                            <td><div class="policyHolder"><a class="policyLink" href="#">I agree with the terms and conditions</a></div></td>
+                        </tr>
+                    </table>
                 </div>
-                <button class="buttonSubmit"> Register </button> 
-
-
+                <button class="buttonRegister"> Register </button>
             </div>
 
             <div class="loginSide">
+                <div class="header"> Login </div>
+                <div class="responseLogin"></div>
+                <input type="text" placeholder="Email" class="emailLoginField input"></input>
+                <input type="password" placeholder="Password" class="passwordLoginField input"></input>
+                <button class="buttonLogin"> Login </button>
             </div>
-
         </div>
+
+        <!--Script required for this page-->
+        <script src="js/register.js"></script>
+        <script src="js/login.js"></script>
     </body>
 </html>
 

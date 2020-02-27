@@ -5,36 +5,14 @@
 //What is the goal of the request
 $rec_goal = $_POST['goal'];
 
-//What is the user's password
-$rec_password = $_POST['password'];
-
-//User's first and last name
-$rec_firstName = $_POST['firstName'];
-$rec_lastName = $_POST['lastName'];
-
-//What is the user's email address
-$rec_email = $_POST['email'];
-
-//What is the user's street name
-$rec_street = $_POST['street'];
-
-//What is the user's postal code
-$rec_postal = $_POST['postal'];
-
-//What is the user's house number 
-$rec_house = $_POST['house'];
-
-//What is the user's phone number
-$rec_phone = $_POST['phone'];
-
 //Db login
 $servername = "127.0.0.1:3307";
 $username = "root";
-$password = "";
+$passw = "";
 
 //Connect to the database.
 try {
-    $handle = new PDO("mysql:host=$servername;dbname=eshop", $username, $password);
+    $handle = new PDO("mysql:host=$servername;dbname=eshop", $username, $passw);
 
     $handle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
@@ -43,6 +21,28 @@ try {
 
 //The goal is to create a new user
 if($rec_goal === 'newUser') {
+
+    //What is the user's password
+    $rec_password = $_POST['password'];
+
+    //User's first and last name
+    $rec_firstName = $_POST['firstName'];
+    $rec_lastName = $_POST['lastName'];
+
+    //What is the user's email address
+    $rec_email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+
+    //What is the user's street name
+    $rec_street = $_POST['street'];
+
+    //What is the user's postal code
+    $rec_postal = $_POST['postal'];
+
+    //What is the user's house number 
+    $rec_house = $_POST['house'];
+
+    //What is the user's phone number
+    $rec_phone = $_POST['phone'];
 
     //Query the database's table 'users' to check if the user already exists
     $pull_stmt = "SELECT email FROM users";
@@ -99,6 +99,30 @@ if($rec_goal === 'newUser') {
         $newUser->execute();
     }
 } elseif($rec_goal === "updateUser") {
+
+    //What is the user's password
+    $rec_password = $_POST['password'];
+
+    //User's first and last name
+    $rec_firstName = $_POST['firstName'];
+    $rec_lastName = $_POST['lastName'];
+
+    //What is the user's email address
+    $rec_email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+
+    //What is the user's street name
+    $rec_street = $_POST['street'];
+
+    //What is the user's postal code
+    $rec_postal = $_POST['postal'];
+
+    //What is the user's house number 
+    $rec_house = $_POST['house'];
+
+    //What is the user's phone number
+    $rec_phone = $_POST['phone'];
+
+
     //Generate the userId
     $userId = md5($rec_email);
 
@@ -174,5 +198,62 @@ if($rec_goal === 'newUser') {
     } else {
         echo "Password Incorrect!";
     }
-} 
+
+//A user wants to login
+} elseif($rec_goal === "login") {
+    //What is the user's password
+    $rec_password = $_POST['password'];
+
+    //What is the user's email address
+    $rec_email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    
+    //Generate a userId based on the email with a MD5 hash
+    $userId = md5($rec_email);
+
+
+    //Check if the user exists
+    $pull_stmt = "SELECT * FROM users";
+
+    $getUser = $handle->prepare($pull_stmt);
+    $getUser->execute();
+    
+    $users = $getUser->fetchAll();
+
+    $userExists = false;
+
+    foreach ($users as $user) {
+        if($user['user_id'] === $userId) {
+            $userExists = true;
+        }
+    }
+
+    if($userExists) {
+        //Get the user from the database
+        $pull_stmt = "SELECT * FROM users WHERE user_id = '${userId}'";
+
+        //Prepare and run the statement
+        $getUser = $handle->prepare($pull_stmt);
+        $getUser->execute();
+        
+        //Fetch the data and put it in an array
+        $user = $getUser->fetch();
+
+        //Set the salt from the user, aquired from the database
+        $salt = $user['salt'];
+
+        //Hash the password we received from the client
+        $iterations = 1000;
+        $hash = hash_pbkdf2("sha256", $rec_password, $salt, $iterations, 512);
+
+        //Check if the newly generated hash matches what we store in the database, if so, report back to the client,
+        //if the hashes don't match, the password is wrong, report this back as well.
+        if($hash === $user['password']) {
+            echo "loginAccepted";
+        } else {
+            echo "loginDenied:incorrectPassword";
+        }
+    } else {
+        echo "loginDenied:noUser";
+    }
+}
 ?>

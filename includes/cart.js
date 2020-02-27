@@ -193,6 +193,10 @@ function toBackend(goal, price, qty, item, id) {
             'price': price
         }
     }).done(function(msg) {
-        console.log("Callback \n" + msg);
+        if(msg == "succes:addedToCart") {
+            //Adding was a success on the backend
+        } else if(msg = "failed:alreadyInCart") {
+            
+        }
     });
 }

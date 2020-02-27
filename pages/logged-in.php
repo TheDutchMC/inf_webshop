@@ -4,5 +4,5 @@
     <div id="loggedInDiv"></div>
 </div>
 
-<script src = "js/check-logged-in.js"></script>
+<!--<script src = "js/check-logged-in.js"></script>-->
 

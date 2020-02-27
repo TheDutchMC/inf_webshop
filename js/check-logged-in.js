@@ -4,7 +4,7 @@ checkLogin();
 //Check if we are logged in
 function checkLogin() {
     if(sessionStorage.getItem('userEntity') == null) {
-        window.location.href = 'login.php';
+       // window.location.href = 'login.php';
     } else {
         var userEntity = {};
         userEntity = JSON.parse(sessionStorage.getItem('userEntity'));
